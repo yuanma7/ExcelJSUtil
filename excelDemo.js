@@ -1,17 +1,18 @@
 const ExcelJS = require('exceljs'); // import ExcelJS class from exceljs
 
-const workbook = new ExcelJS.Workbook();
-workbook.xlsx.readFile("D:\\Udemy\\ExcelJSUtil\\excelDownloadTest.xlsx").then(function(){
+async function excelTest() {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile("D:\\Udemy\\ExcelJSUtil\\excelDownloadTest.xlsx");
     const worksheet = workbook.getWorksheet('Sheet1');// hold the data of Sheet1
 
-//read and print data in the worksheet
-worksheet.eachRow( (row, rowNumber) =>
-{
-    row.eachCell((cell, colNumber) =>
-    {
-        console.log(cell.value);
-    }
-    )
-})
-});
+    //read and print data in the worksheet
+    worksheet.eachRow((row, rowNumber) => {
+        row.eachCell((cell, colNumber) => {
+            console.log(cell.value);
+        }
+        )
+    })
+}
+
+excelTest();
 
